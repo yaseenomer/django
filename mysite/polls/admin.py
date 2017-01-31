@@ -2,5 +2,10 @@ from django.contrib import admin
 from polls.models import Question,Choice
 
 # Register your models here.
-admin.site.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    filds= ['pub_date','question_text']
+
+
+
+admin.site.register(Question,QuestionAdmin)
 admin.site.register(Choice)
