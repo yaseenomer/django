@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+	<!-- student.student  Form View -->
+	
+	
+		<record model="ir.ui.view" id="view_student_form">
+			<field name="name">student.student.form</field>
+			<field name="model">student.student</field>
+			<field name="arch" type="xml">
+				<form string="Student GRN format" >
+				<header>  
+            
+			
+			</header>
+					<sheet>
+                                          <header>
+            <button name="in_state2" type="object"  string="Confirm state1" class="oe_highlight"/>
+<button name="in_state3" type="object" string="cofirm state3" class="oe_highlight"/>
+<button name="in_state4" type="object"  string="cofirm state4" class="oe_highlight" />
+<button string="Hello" type="action" name="%(action_student_wizard)d" class="oe_highlight"/>
+               
+
+   <field name="state" widget="statusbar" statusbar_visible="state1,state2,state3,state4" statusbar_colors='{"state2":"blue"}'/>
+                                        </header>
+						<group col="4" colspan="4">
+							<field name="name" />
+							<field name="clas"/>
+							<field name="stu_level"/>
+                                                         <field name="subj_ids"/>
+                                                         <field name="gender"/>
+
+							   <field name="active"/>
+							</group>						
+					
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		
+		
+		
+		<record id="view_school_student_tree" model="ir.ui.view">
+			<field name="name">student.student.tree</field>
+			<field name="model">student.student</field>
+			<field eval="8" name="priority" />
+			<field name="arch" type="xml">
+				<tree string="Partners">
+					<field name="name"/>
+				
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_student_form">
+			<field name="name">student</field>
+			<field name="res_model">student.student</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		 	<!-- subject GRN Form View -->
+		
+		
+		
+
+
+
+
+
+
+             <record model="ir.ui.view" id="view_subject_form">
+			<field name="name">subject.subject.form</field>
+			<field name="model">subject.subject</field>
+			<field name="arch" type="xml">
+				<form string="Subject GRN format" >
+				<header>  
+            
+			
+			</header>
+					<sheet>
+						<group col="4" colspan="4">
+							<field name="name" />
+							
+							
+							</group>						
+					
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		
+		
+		
+		<record id="view_subject_tree" model="ir.ui.view">
+			<field name="name">subject.subject.tree</field>
+			<field name="model">subject.subject</field>
+			<field eval="8" name="priority" />
+			<field name="arch" type="xml">
+				<tree string="Subject">
+					<field name="name"/>
+				
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_subject_form">
+			<field name="name">subject</field>
+			<field name="res_model">subject.subject</field>
+			<field name="view_type">form</field>
+</record>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		
+		<!-- Student GRN Form View -->
+		<record model="ir.ui.view" id="view_school_levels_form">
+			<field name="name">school.levels.form</field>
+			<field name="model">ehab.level</field>
+			<field name="arch" type="xml">
+				<form string="Student GRN format" >
+				<header>  
+            
+			<button string="Generate password" type="object" name="generate_record_password"/>
+			</header>
+					<sheet>
+						<group col="4" colspan="4">
+							<field name="name" />
+							
+							</group>						
+					
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record id="view_school_levels_tree" model="ir.ui.view">
+			<field name="name">school.levels.tree</field>
+			<field name="model">ehab.level</field>
+			<field eval="8" name="priority" />
+			<field name="arch" type="xml">
+				<tree string="Partners">
+					<field name="name"/>
+						
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_student_grn_form">
+			<field name="name">Levels</field>
+			<field name="res_model">ehab.level</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		
+				<!-- Student GRN Form View -->
+		<record model="ir.ui.view" id="view_school_classes_form">
+			<field name="name">school.classes.form</field>
+			<field name="model">ehab.class</field>
+			<field name="arch" type="xml">
+				<form string="Student GRN format" >
+					<sheet>
+						<group col="4" colspan="4">
+							<field name="name" />
+							<field name="level"/>
+							
+							</group>						
+					
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record id="view_school_classes_tree" model="ir.ui.view">
+			<field name="name">school.classes.tree</field>
+			<field name="model">ehab.class</field>
+			<field eval="8" name="priority" />
+			<field name="arch" type="xml">
+				<tree string="Partners">
+					<field name="name"/>
+					<field name="level"  />	
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_class_form">
+			<field name="name">classes</field>
+			<field name="res_model">ehab.class</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+
+
+		<!-- School's Menu -->
+		<menuitem  id="menu_ehab" name="School" />
+
+		<menuitem name="Configuration" parent="menu_ehab" id="menu_ehabConfig"/>
+                <menuitem name="Student Data" parent="menu_ehab" id="menu_St_data"/>
+
+		<menuitem name="Levels" parent="menu_ehabConfig" id="menu_level_ehab"  action="action_student_grn_form" sequence="1"/>
+		
+		<menuitem name="classes" parent="menu_ehabConfig" id="menu_class_ehab"  action="action_class_form" sequence="1"/>
+		<menuitem name="student" parent="menu_St_data" id="menu_student"  action="action_student_form" sequence="2"/>
+                <menuitem name="Subject" parent="menu_ehabConfig" id="menu_subject"  action="action_subject_form" sequence="3"/>
+
+		
+		
+
+	</data>
+</openerp>

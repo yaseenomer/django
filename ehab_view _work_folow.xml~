@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="student_work_folow" model="workflow">
+            <field name="name">student work folow</field>
+            <field name="osv">student.student</field>
+            <field name="on_create">True</field>
+        </record>
+
+        <record id="act_draft_state1" model="workflow.activity">
+            <field name="wkf_id" ref="student_work_folow"/>
+            <field name="flow_start">True</field>
+            <field name="name">draft</field>
+        </record>
+        <record id="act_state2" model="workflow.activity">
+            <field name="wkf_id" ref="student_work_folow"/>
+            <field name="name">state2</field>
+            <field name="kind">function</field>
+            <field name="action">in_state2()</field>
+        </record>
+        <record id="act_state3" model="workflow.activity">
+            <field name="wkf_id" ref="student_work_folow"/>
+            <field name="name">state3</field>
+            <field name="kind">function</field>
+            <field name="action">in_state3()</field>
+        </record>
+   
+        <record id="act_state4" model="workflow.activity">
+            <field name="wkf_id" ref="student_work_folow"/>
+            <field name="name">state4</field>
+            <field name="action">in_state4()</field>
+            <field name="kind">function</field>
+            <field name="flow_stop">True</field>
+        </record>
+
+
+
+
+        <record id="trans_draft_sent" model="workflow.transition">
+            <field name="act_from" ref="act_draft_state1"/>
+            <field name="act_to" ref="act_state2"/>
+            <field name="signal">State1_state2</field>
+        </record>
+        <record id="trans_sent_open" model="workflow.transition">
+            <field name="act_from" ref="act_state2"/>
+            <field name="act_to" ref="act_state3"/>
+            <field name="signal">State2_state3</field>
+        </record>
+     
+       
+        <record id="trans_open_done" model="workflow.transition">
+            <field name="act_from" ref="ct_state3"/>
+            <field name="act_to" ref="act_state4"/>
+            <field name="signal">State3_state4</field>
+        </record>
+        
+    </data>
+</openerp>
